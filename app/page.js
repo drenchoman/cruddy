@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Api from '@/api/api';
 import { Suspense } from 'react';
 import Button from '@/api/button';
+import Stopwatch from '@/api/stopwatch';
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
         <Api />
       </Suspense>
       <Button />
+      <Stopwatch />
     </>
   );
 }
