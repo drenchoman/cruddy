@@ -1,9 +1,11 @@
+import styles from './products-grid.module.css';
+import ProductItem from './product-item';
 export default function ProductsGrid({ products }) {
   return (
-    <ul>
+    <ul className={styles.grid}>
       {products.map((product) => (
         <li key={product.id}>
-          <h1>{product.title}</h1>
+          <ProductItem {...product} />
         </li>
       ))}
     </ul>
