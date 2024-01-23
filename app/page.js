@@ -1,8 +1,3 @@
-import Image from 'next/image';
-import Api from '@/api/api';
-import Button from '@/api/button';
-import Stopwatch from '@/api/stopwatch';
-
 import { Suspense } from 'react';
 import { getProducts } from '@/lib/products';
 import ProductsGrid from '@/components/products-grid';

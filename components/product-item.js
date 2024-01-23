@@ -15,7 +15,7 @@ export default function ProductItem({
           <Image src={image} alt={description} fill />
         </div>
         <div>
-          <h2>{title}</h2>
+          <h2 className={styles.title}>{title}</h2>
           <p>{price}</p>
         </div>
       </header>
