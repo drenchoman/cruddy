@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
-import { getProducts } from '@/lib/products';
+import { getProducts, getTopThreeProducts } from '@/lib/products';
+import Carousel from '@/components/carousel/carousel';
 import ProductsGrid from '@/components/products-grid';
 
 async function Products() {
@@ -7,11 +8,17 @@ async function Products() {
   return <ProductsGrid products={products} />;
 }
 
+async function TopThreeProducts() {
+  const products = await getTopThreeProducts();
+  return <Carousel images={products} />;
+}
+
 export default function Home() {
   return (
     <>
       <Suspense fallback={<p>Fetching products</p>}>
         <Products />
+        <TopThreeProducts />
       </Suspense>
     </>
   );
