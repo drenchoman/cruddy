@@ -6,8 +6,14 @@ import Image from 'next/image';
 import rightArrow from '@/public/right-arrow.svg';
 import leftArrow from '@/public/left-arrow.svg';
 
-export default function Carousel({ images }) {
+export default function Carousel({ products }) {
+  const images = products.map((product) => product.image);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const copy = [
+    'Carry Your World in Style!',
+    'Elevate Your Casual Game',
+    'Classic Comfort, Modern Style',
+  ];
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) =>
@@ -25,22 +31,34 @@ export default function Carousel({ images }) {
 
   return (
     <div className={styles.carousel}>
-      <div className={styles.image}>
-        <Image
-          key={currentIndex}
-          src={images[currentIndex]}
-          fill
-          alt="test"
-        />
-      </div>
-      <div className={styles.slideDirection}>
-        <div className={styles.left} onClick={handlePrevious}>
-          <Image src={leftArrow} alt="Left arrow" fill />
+      <div
+        className={`${styles.cardInner} ${
+          currentIndex === 1 ? styles.reverse : ''
+        }`}
+      >
+        <div className={styles.description}>
+          <h3>{copy[currentIndex]}</h3>
+          <p>{products[currentIndex].title}</p>
         </div>
-        <div className={styles.right} onClick={handleNext}>
-          <Image src={rightArrow} alt="Right Arrow" fill />
+
+        <div className={styles.image}>
+          <Image
+            key={currentIndex}
+            src={images[currentIndex]}
+            fill
+            alt="test"
+          />
+        </div>
+        <div className={styles.slideDirection}>
+          <div className={styles.left} onClick={handlePrevious}>
+            <Image src={leftArrow} alt="Left arrow" fill />
+          </div>
+          <div className={styles.right} onClick={handleNext}>
+            <Image src={rightArrow} alt="Right Arrow" fill />
+          </div>
         </div>
       </div>
+
       <div className={styles.indicator}>
         {images.map((_, index) => (
           <div

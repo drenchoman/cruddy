@@ -10,7 +10,7 @@ async function Products() {
 
 async function TopThreeProducts() {
   const products = await getTopThreeProducts();
-  return <Carousel images={products} />;
+  return <Carousel products={products} />;
 }
 
 export default function Home() {
