@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { motion, Animatpresence } from 'framer-motion';
 import styles from './carousel.module.css';
 import Image from 'next/image';
+import rightArrow from '@/public/right-arrow.svg';
+import leftArrow from '@/public/left-arrow.svg';
 
 export default function Carousel({ images }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -22,7 +24,7 @@ export default function Carousel({ images }) {
   };
 
   return (
-    <div className="carousel">
+    <div className={styles.carousel}>
       <div className={styles.image}>
         <Image
           key={currentIndex}
@@ -31,34 +33,20 @@ export default function Carousel({ images }) {
           alt="test"
         />
       </div>
-      <div className="slide_direction">
-        <div className="left" onClick={handlePrevious}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="20"
-            viewBox="0 96 960 960"
-            width="20"
-          >
-            <path d="M400 976 0 576l400-400 56 57-343 343 343 343-56 57Z" />
-          </svg>
+      <div className={styles.slideDirection}>
+        <div className={styles.left} onClick={handlePrevious}>
+          <Image src={leftArrow} alt="Left arrow" fill />
         </div>
-        <div className="right" onClick={handleNext}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="20"
-            viewBox="0 96 960 960"
-            width="20"
-          >
-            <path d="m304 974-56-57 343-343-343-343 56-57 400 400-400 400Z" />
-          </svg>
+        <div className={styles.right} onClick={handleNext}>
+          <Image src={rightArrow} alt="Right Arrow" fill />
         </div>
       </div>
-      <div className="indicator">
+      <div className={styles.indicator}>
         {images.map((_, index) => (
           <div
             key={index}
-            className={`dot ${
-              currentIndex === index ? 'active' : ''
+            className={`${styles.dot} ${
+              currentIndex === index ? styles.active : ''
             }`}
             onClick={() => handleDotClick(index)}
           ></div>
